@@ -3,7 +3,7 @@ import { solutionIndex } from './words'
 
 export const shareStatus = (guesses: string[]) => {
   navigator.clipboard.writeText(
-    'Wordle ' +
+      'Сөзділ ' +
       solutionIndex +
       ' ' +
       guesses.length +
@@ -25,7 +25,7 @@ export const generateEmojiGrid = (guesses: string[]) => {
             case 'present':
               return '🟨'
             default:
-              return '⬜'
+              return '⬛'
           }
         })
         .join('')

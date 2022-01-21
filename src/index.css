@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom styles */
+
+a{
+  outline: none;
+  box-shadow: none;
+}
+
+button{
+  outline: none;
+  box-shadow: none;
+}
+
+.keyboard-container{
+    display: inline-flex;
+    flex-direction: column;
+    width: 460px;
+  }
+  
+  .enter-container>div{
+    background-color: rgba(79,70,229,1);
+    color: white;
+  }
+  
+  .enter-container>div:hover,
+  .enter-container>div:active{
+    background-color: rgba(67,56,202,1);
+    color: white;
+  }
+  
+  .delete-container>div{
+    background-color: #1e293b;
+    color: white;
+  }
+  
+  .delete-container>div:hover,
+  .delete-container>div:active{
+    background-color: #0f172a;
+    color: white;
+  }
+  
+  .navigation{
+    width: 460px;
+  }
+
+  @media (max-width: 500px) {
+    .keyboard-container{
+      display: inline-flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .navigation{
+      width: 100%;
+    }
+  }

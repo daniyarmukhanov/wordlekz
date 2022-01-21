@@ -48,56 +48,73 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
             <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
               <div className="absolute right-4 top-4">
                 <XCircleIcon
-                  className="h-6 w-6 cursor-pointer"
+                  className="h-8 w-8 cursor-pointer text-gray-400"
                   onClick={() => handleClose()}
                 />
               </div>
               <div>
                 <div className="text-center">
-                  <Dialog.Title
-                    as="h3"
-                    className="text-lg leading-6 font-medium text-gray-900"
-                  >
-                    How to play
-                  </Dialog.Title>
+                  <p className='my-0'>
+                    <Dialog.Title
+                      as="h1"
+                      className="text-lg font-bold text-gray-900"
+                    >
+                      Ойын шарты
+                    </Dialog.Title>
+                  </p>
                   <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      Guess the WORDLE in 6 tries. After each guess, the color
-                      of the tiles will change to show how close your guess was
-                      to the word.
+                    <p className="text-sm text-gray-800">
+                      Сөзді 6 әрекетте табыңыз. Әр болжамнан кейін 
+                      плиткалар түсі өзгеріп, жауапқа қаншалықты жақын екеніңізді көрсетіп тұрады.
+                    </p>
+                    <br></br>
+                    <p className="text-sm text-gray-800">
+                      Бір күнге бір сөз. Жаңа сөздер күнде шығып тұрады.
                     </p>
 
-                    <div className="flex justify-center mb-1 mt-4">
-                      <Cell value="W" status="correct" />
-                      <Cell value="E" />
-                      <Cell value="A" />
-                      <Cell value="R" />
-                      <Cell value="Y" />
+                    <div className="flex justify-center mb-1 mt-6">
+                      <Cell value="Т" status="correct" />
+                      <Cell value="О" />
+                      <Cell value="М" />
+                      <Cell value="А" />
+                      <Cell value="Р" />
                     </div>
-                    <p className="text-sm text-gray-500">
-                      The letter W is in the word and in the correct spot.
+                    <p className="text-sm text-gray-600 mt-2">
+                      <b>Т</b> әрпі сөз ішінде бар әрі дұрыс орында.
                     </p>
 
-                    <div className="flex justify-center mb-1 mt-4">
-                      <Cell value="P" />
-                      <Cell value="I" />
-                      <Cell value="L" status="present" />
-                      <Cell value="O" />
-                      <Cell value="T" />
+                    <div className="flex justify-center mb-1 mt-6">
+                      <Cell value="С" />
+                      <Cell value="Е" />
+                      <Cell value="Н" status="present" />
+                      <Cell value="І" />
+                      <Cell value="М" />
                     </div>
-                    <p className="text-sm text-gray-500">
-                      The letter L is in the word but in the wrong spot.
+                    <p className="text-sm text-gray-600 mt-2">
+                      <b>Н</b> әрпі сөз ішінде бар, алайда тұрған жері қате.
                     </p>
 
-                    <div className="flex justify-center mb-1 mt-4">
-                      <Cell value="V" />
-                      <Cell value="A" />
-                      <Cell value="G" />
-                      <Cell value="U" status="absent" />
-                      <Cell value="E" />
+                    <div className="flex justify-center mb-1 mt-6">
+                      <Cell value="Ү" />
+                      <Cell value="Н" />
+                      <Cell value="П" />
+                      <Cell value="А" status="absent" />
+                      <Cell value="З" />
                     </div>
-                    <p className="text-sm text-gray-500">
-                      The letter U is not in the word in any spot.
+                    <p className="text-sm text-gray-600 mt-2">
+                      <b>А</b> әрпі сөзде мүлде жоқ.
+                    </p>
+                  </div>
+                  <hr className='mt-6 mb-4'></hr>
+                  <div className="mt-2 text-left">
+                    <p className="text-sm text-gray-400 mb-4">
+                      Бұл ойынды <a className='text-indigo-400 visited:text-indigo-600 hover:text-indigo-600' href='https://t.me/qazcard'>Данияр Муханов</a> пен <a className='text-indigo-400 visited:text-indigo-600 hover:text-indigo-600' href='https://t.me/qazsoz'>Ильяс Жолдасбай</a> жасаған.
+                    </p>
+                    <p className="text-sm text-gray-400 mb-4">
+                      Сөздікқор <a className='text-indigo-400 visited:text-indigo-600 hover:text-indigo-600' href='https://t.me/qazcard'>мына</a> репозиториден алынды.
+                    </p>
+                    <p className="text-sm text-gray-400">
+                      Бастапқы код GitHub-тағы <a className='text-indigo-400 visited:text-indigo-600 hover:text-indigo-600' href='https://github.com/hannahcode/wordle'>Wordle Clone</a> репозиториінен алынған.
                     </p>
                   </div>
                 </div>

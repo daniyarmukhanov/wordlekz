@@ -12,8 +12,8 @@ export const Alert = ({ isOpen, message, variant = 'warning' }: Props) => {
   const classes = classNames(
     'fixed top-2.5 left-1/2 transform -translate-x-1/2 max-w-sm w-full shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden',
     {
-      'bg-rose-200': variant === 'warning',
-      'bg-green-200': variant === 'success',
+      'bg-red-200': variant === 'warning',
+      'bg-yellow-200': variant === 'success',
     }
   )
 

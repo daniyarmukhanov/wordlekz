@@ -62,9 +62,9 @@ export const WinModal = ({
                 />
               </div>
               <div>
-                <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-emerald-100">
                   <CheckIcon
-                    className="h-6 w-6 text-green-600"
+                    className="h-6 w-6 text-emerald-600"
                     aria-hidden="true"
                   />
                 </div>
@@ -73,11 +73,11 @@ export const WinModal = ({
                     as="h3"
                     className="text-lg leading-6 font-medium text-gray-900"
                   >
-                    You won!
+                    Әп, бәрекелді!
                   </Dialog.Title>
                   <div className="mt-2">
                     <MiniGrid guesses={guesses} />
-                    <p className="text-sm text-gray-500">Great job.</p>
+                    <p className="text-sm text-gray-500">Енді осыны достарыңызға бөліссеңіз болады</p>
                   </div>
                 </div>
               </div>
@@ -90,7 +90,7 @@ export const WinModal = ({
                     handleShare()
                   }}
                 >
-                  Share
+                  Бөлісу
                 </button>
               </div>
             </div>
