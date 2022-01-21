@@ -12,11 +12,12 @@ export const shareClipboard = (guesses: string[]) => {
 }
 
 export const shareOther = (guesses: string[], callback) => {
-  navigator.share({
-    text: generateMessage(guesses),
+   navigator.share({
+    title: generateMessage(guesses),
     url: WORDLE_DOMAIN
+  }).then(() => {
+    console.log('Thanks for sharing!');
   })
-  .then(() => callback())
 }
 
 export const generateMessage = (guesses: string[]) => {
