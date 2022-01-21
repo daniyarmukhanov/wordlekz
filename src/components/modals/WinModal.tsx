@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/outline'
 import { MiniGrid } from '../mini-grid/MiniGrid'
-import { shareClipboard, shareOther } from '../../lib/share'
+import { shareClipboard, shareOther, generateMessage, WORDLE_DOMAIN } from '../../lib/share'
 import { XCircleIcon, DuplicateIcon } from '@heroicons/react/outline'
 import { ShareIcon } from '@heroicons/react/solid'
 import { TwitterShareButton } from "react-share";
@@ -86,7 +86,7 @@ export const WinModal = ({
                 </div>
               </div>
               <div className="mt-5 sm:mt-6 grid gap-2 grid-cols-1 grid-rows-3 max-w-full">
-                <TwitterShareButton title="test" url="asd">
+                <TwitterShareButton title={generateMessage(guesses)} url={WORDLE_DOMAIN}>
                    <button
                     type="button"
                     className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-sky-400 text-base font-medium text-white hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"

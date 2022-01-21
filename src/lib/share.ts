@@ -1,7 +1,7 @@
 import { getGuessStatuses } from './statuses'
 import { solutionIndex } from './words'
 
-const WORDLE_DOMAIN = 'https://wordle.kz/'
+export const WORDLE_DOMAIN = 'wordle.kz'
 
 export const shareClipboard = (guesses: string[]) => {
   navigator.clipboard.writeText(generateMessage(guesses))
@@ -21,7 +21,7 @@ export const generateMessage = (guesses: string[]) => {
       ' ' +
       guesses.length +
       '/6\n\n' +
-      generateEmojiGrid(guesses)
+      generateEmojiGrid(guesses)+'\n\n'
 }
 
 export const generateEmojiGrid = (guesses: string[]) => {
