@@ -11,13 +11,14 @@ export const shareClipboard = (guesses: string[]) => {
   navigator.clipboard.writeText(generateMessage(guesses))
 }
 
-export const shareOther = (guesses: string[], callback) => {
-   navigator.share({
-    title: generateMessage(guesses),
-    url: WORDLE_DOMAIN
+export const shareOther = (guesses: string[]) => {
+  navigator.share({
+    title: 'WebShare API Demo',
+    url: 'https://codepen.io/ayoisaiah/pen/YbNazJ'
   }).then(() => {
     console.log('Thanks for sharing!');
   })
+  .catch(console.error);
 }
 
 export const generateMessage = (guesses: string[]) => {
