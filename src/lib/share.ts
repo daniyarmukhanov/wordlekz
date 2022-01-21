@@ -3,6 +3,10 @@ import { solutionIndex } from './words'
 
 export const WORDLE_DOMAIN = 'wordle.kz'
 
+export const canShareOther = () => {
+  return !!navigator.share
+}
+
 export const shareClipboard = (guesses: string[]) => {
   navigator.clipboard.writeText(generateMessage(guesses))
 }
