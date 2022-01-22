@@ -64,12 +64,13 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                   </p>
                   <div className="mt-2">
                     <p className="text-sm text-gray-800">
-                      Сөзді 6 әрекетте табыңыз. Әр болжамнан кейін 
-                      плиткалар түсі өзгеріп, жауапқа қаншалықты жақын екеніңізді көрсетіп тұрады.
+                    6 рет байқап/талпынып, сөзді табыңыз.
+                    Әр талпыныстан кейін шаршы түсі өзгеріп,
+                    жауапқа қанша жақын екеніңізді көрсетеді.
                     </p>
                     <br></br>
                     <p className="text-sm text-gray-800">
-                      Бір күнге бір сөз. Жаңа сөздер күнде шығып тұрады.
+                    Бір күнде бір сөз. Күн сайын жаңа сөз шығып тұрады.
                     </p>
 
                     <div className="flex justify-center mb-1 mt-6">
@@ -80,7 +81,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                       <Cell value="Р" />
                     </div>
                     <p className="text-sm text-gray-600 mt-2">
-                      <b>Т</b> әрпі сөз ішінде бар әрі дұрыс орында.
+                      <b>Т</b> әрпі сөз ішінде бар әрі өз орнында тұр.
                     </p>
 
                     <div className="flex justify-center mb-1 mt-6">
@@ -111,7 +112,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                       Бұл ойынды <a className='text-indigo-400 visited:text-indigo-600 hover:text-indigo-600' href='https://t.me/qazcard'>Данияр Муханов</a> пен <a className='text-indigo-400 visited:text-indigo-600 hover:text-indigo-600' href='https://t.me/qazsoz'>Ильяс Жолдасбай</a> жасаған.
                     </p>
                     <p className="text-sm text-gray-400 mb-4">
-                      Сөздікқор <a className='text-indigo-400 visited:text-indigo-600 hover:text-indigo-600' href='https://t.me/qazcard'>мына</a> репозиториден алынды.
+                      Сөздікқор <a className='text-indigo-400 visited:text-indigo-600 hover:text-indigo-600' href='https://github.com/jarjan/qate.js'>мына</a> репозиториден алынды.
                     </p>
                     <p className="text-sm text-gray-400">
                       Бастапқы код GitHub-тағы <a className='text-indigo-400 visited:text-indigo-600 hover:text-indigo-600' href='https://github.com/hannahcode/wordle'>Wordle Clone</a> репозиториінен алынған.

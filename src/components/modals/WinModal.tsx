@@ -89,7 +89,7 @@ export const WinModal = ({
                 <TwitterShareButton title={generateMessage(guesses)} url={WORDLE_DOMAIN}>
                    <button
                     type="button"
-                    className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-sky-400 text-base font-medium text-white hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+                    className="inline-flex items-center justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-sky-400 text-base font-medium text-white hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
                   >
                     <FontAwesomeIcon icon={faTwitter} className="h-6 w-7 pr-1 fa-lg" />
                     Twitter
@@ -97,7 +97,7 @@ export const WinModal = ({
                 </TwitterShareButton>
                {canShareOther() && <button
                   type="button"
-                  className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+                  className="inline-flex items-center justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
                   onClick={() => {
                     shareOther(guesses, handleShare)
                   }}
@@ -108,7 +108,7 @@ export const WinModal = ({
                }
                 <button
                   type="button"
-                  className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-emerald-600 text-base font-medium text-white hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+                  className="inline-flex items-center justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-emerald-600 text-base font-medium text-white hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
                   onClick={() => {
                     shareClipboard(guesses)
                     handleShare()
