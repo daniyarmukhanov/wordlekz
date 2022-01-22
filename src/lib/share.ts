@@ -25,7 +25,7 @@ export const generateMessage = (guesses: string[]) => {
       ' ' +
       guesses.length +
       '/6\n\n' +
-      generateEmojiGrid(guesses)+'\n\n wordle.kz'
+      generateEmojiGrid(guesses)+'\n\n'
 }
 
 export const generateEmojiGrid = (guesses: string[]) => {
