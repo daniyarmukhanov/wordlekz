@@ -8,6 +8,7 @@ import { ShareIcon } from '@heroicons/react/solid'
 import { TwitterShareButton } from "react-share";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { Timer } from '../Timer'
 
 type Props = {
   isOpen: boolean
@@ -81,11 +82,12 @@ export const WinModal = ({
                   </Dialog.Title>
                   <div className="mt-2">
                     <MiniGrid guesses={guesses} />
+                    <Timer />
                     <p className="text-sm text-gray-500">Енді осыны достарыңызға бөліссеңіз болады</p>
                   </div>
                 </div>
               </div>
-              <div className="mt-5 sm:mt-6 grid gap-2 grid-cols-1 grid-rows-3 max-w-full">
+              <div className="sm:mt-2 grid gap-2 grid-cols-1 grid-rows-3 max-w-full">
                 <TwitterShareButton title={generateMessage(guesses)} url={WORDLE_DOMAIN}>
                    <button
                     type="button"
