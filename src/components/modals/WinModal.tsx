@@ -83,7 +83,7 @@ export const WinModal = ({
                   <div className="mt-2">
                     <MiniGrid guesses={guesses} />
                     <Timer />
-                    <p className="text-sm text-gray-500">Енді осыны достарыңызға бөліссеңіз болады</p>
+                    <p className="text-sm text-gray-500">Енді осыны достарыңызбен бөліссеңіз болады</p>
                   </div>
                 </div>
               </div>
