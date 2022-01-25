@@ -109,7 +109,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                   <hr className='mt-6 mb-4'></hr>
                   <div className="mt-2 text-left">
                     <p className="text-sm text-gray-400 mb-4">
-                      Бұл ойынды <a className='text-indigo-400 visited:text-indigo-600 hover:text-indigo-600' href='https://t.me/qazcard'>Данияр Муханов</a> пен <a className='text-indigo-400 visited:text-indigo-600 hover:text-indigo-600' href='https://t.me/qazsoz'>Ильяс Жолдасбай</a> жасаған.
+                      Бұл ойынды <a className='text-indigo-400 visited:text-indigo-600 hover:text-indigo-600' href='https://t.me/qazcard'>Данияр Муханов</a> , <a className='text-indigo-400 visited:text-indigo-600 hover:text-indigo-600' href='https://t.me/qazsoz'>Ильяс Жолдасбай</a> және <a className='text-indigo-400 visited:text-indigo-600 hover:text-indigo-600' href='https://t.me/hiremegoogle'>Ержан Торғаев</a> жасаған.
                     </p>
                     <p className="text-sm text-gray-400 mb-4">
                       Сөздікқор <a className='text-indigo-400 visited:text-indigo-600 hover:text-indigo-600' href='https://github.com/jarjan/qate.js'>мына</a> репозиториден алынды.

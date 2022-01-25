@@ -89,7 +89,7 @@ function App() {
     <div className="h-screen basis">
       <Alert message="Бұндай сөз табылмады" isOpen={isWordNotFoundAlertOpen} />
       <Alert
-        message={`Қап, сәтіңіз болмады, бүгінгі сөз: ${solution} болған`}
+        message={`Қап, таба алмадыңыз. Бүгінгі сөз: ${solution} болған`}
         isOpen={isGameLost}
       />
       <Alert
