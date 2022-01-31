@@ -5,6 +5,7 @@ import { Grid } from './components/grid/Grid'
 import { Keyboard } from './components/keyboard/Keyboard'
 import { InfoModal } from './components/modals/InfoModal'
 import { WinModal } from './components/modals/WinModal'
+import { LostModal } from './components/modals/LostModal'
 import { isWordInWordList, isWinningWord, solution } from './lib/words'
 import {
   loadGameStateFromLocalStorage,
@@ -14,10 +15,11 @@ import {
 function App() {
   const [currentGuess, setCurrentGuess] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
+  const [isGameLost, setIsGameLost] = useState(false)
   const [isWinModalOpen, setIsWinModalOpen] = useState(false)
+  const [isLostModalOpen, setIsLostModalOpen] = useState(false)
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
   const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false)
-  const [isGameLost, setIsGameLost] = useState(false)
   const [shareComplete, setShareComplete] = useState(false)
   const [guesses, setGuesses] = useState<string[]>(() => {
     const loaded = loadGameStateFromLocalStorage()
@@ -26,6 +28,9 @@ function App() {
     }
     if (loaded.guesses.includes(solution)) {
       setIsGameWon(true)
+    }
+    if (!loaded.guesses.includes(solution) && loaded.guesses.length > 5) {
+      setIsGameLost(true)
     }
     return loaded.guesses
   })
@@ -41,6 +46,12 @@ function App() {
   useEffect(() => {
     saveGameStateToLocalStorage({ guesses, solution })
   }, [guesses])
+
+  useEffect(() => {
+    if (isGameLost) {
+      setIsLostModalOpen(true)
+    }
+  }, [isGameLost])
 
   useEffect(() => {
     if (isGameWon) {
@@ -63,7 +74,7 @@ function App() {
       setIsWordNotFoundAlertOpen(true)
       return setTimeout(() => {
         setIsWordNotFoundAlertOpen(false)
-      }, 12000)
+      }, 5000)
     }
 
     const winningWord = isWinningWord(currentGuess)
@@ -75,9 +86,9 @@ function App() {
       if (winningWord) {
         return setIsGameWon(true)
       }
-
       if (guesses.length === 5) {
         setIsGameLost(true)
+        setIsLostModalOpen(true)
         return setTimeout(() => {
           setIsGameLost(false)
         }, 12000)
@@ -88,10 +99,10 @@ function App() {
   return (
     <div className="h-screen basis">
       <Alert message="Бұндай сөз табылмады" isOpen={isWordNotFoundAlertOpen} />
-      <Alert
+      {/* <Alert
         message={`Қап, таба алмадыңыз. Бүгінгі сөз: ${solution} болған`}
         isOpen={isGameLost}
-      />
+      /> */}
       <Alert
         message="Нәтижеңіз көшіріліп, керекті жерге қойылуға дайын"
         isOpen={shareComplete}
@@ -136,6 +147,20 @@ function App() {
           }, 2000)
         }}
       />
+
+      <LostModal
+        isOpen={isLostModalOpen}
+        handleClose={() => setIsLostModalOpen(false)}
+        guesses={guesses}
+        handleShare={() => {
+          setIsLostModalOpen(false)
+          setShareComplete(true)
+          return setTimeout(() => {
+            setShareComplete(false)
+          }, 2000)
+        }}
+      />
+
       <InfoModal
         isOpen={isInfoModalOpen}
         handleClose={() => setIsInfoModalOpen(false)}
