@@ -1,6 +1,6 @@
 import { WORDS } from '../constants/wordlist'
 import { VALIDGUESSES } from '../constants/validGuesses'
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 export const isWordInWordList = (word: string) => {
   return (
@@ -19,8 +19,10 @@ export const getWordOfDay = () => {
   // const now = Date.now()
   // const msInDay = 86400000
   // const index = Math.floor((now - epochMs) / msInDay)
+  moment.tz.setDefault("Asia/Almaty");
   const index = moment().format('DDD');
-  console.log(moment().format('DDD'));
+  // console.log(moment().format('DDD'));
+  // console.log(moment().format());
 
   return {
     solution: WORDS[index].toUpperCase(),

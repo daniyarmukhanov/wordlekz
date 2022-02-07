@@ -70,7 +70,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                     </p>
                     <br></br>
                     <p className="text-sm text-gray-800">
-                    Бір күнде бір сөз. Күн сайын жаңа сөз шығып тұрады.
+                    Бір күнде бір сөз. Алматы уақыты (GMT/UTC+6) бойынша, күн сайын жаңа сөз шығып тұрады.
                     </p>
 
                     <div className="flex justify-center mb-1 mt-6">

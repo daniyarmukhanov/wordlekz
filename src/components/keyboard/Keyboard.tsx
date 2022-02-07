@@ -14,9 +14,9 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
   const charStatuses = getStatuses(guesses)
 
   const onClick = (value: KeyValue) => {
-    if (value === 'ENTER') {
+    if (value == 'ENTER') {
       onEnter()
-    } else if (value === 'DELETE') {
+    } else if (value == 'DELETE') {
       onDelete()
     } else {
       onChar(value)
@@ -25,13 +25,13 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
 
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
-      if (e.code === 'Enter') {
+      if (e.code == 'Enter') {
         onEnter()
-      } else if (e.code === 'Backspace') {
+      } else if (e.code == 'Backspace') {
         onDelete()
       } else {
         const key = e.key.toUpperCase()
-        if ((key.length === 1 && key >= 'А' && key <= 'Я')
+        if ((key.length == 1 && key >= 'А' && key <= 'Я')
         || (key =='Ә' || key == 'І' || key == 'Ң' || key == 'Ғ' || key == 'Ү' || key == 'Ұ' || key == 'Қ' || key == 'Ө' || key == 'Һ')) {
           onChar(key)
         }

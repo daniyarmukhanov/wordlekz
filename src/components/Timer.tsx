@@ -1,27 +1,25 @@
-import { Fragment } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { CheckIcon } from '@heroicons/react/outline'
-import { XCircleIcon, DuplicateIcon } from '@heroicons/react/outline'
-import { ShareIcon } from '@heroicons/react/solid'
-import { TwitterShareButton } from "react-share";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { useState, useEffect } from 'react'
+import moment from 'moment-timezone';
 
 type Props = {
 }
-
-
 
 export const Timer = ({
 }: Props) => {
 
   const [timeString, setTimeString] = useState('00:00:00');
 
-  const date = new Date();
-  const second = date.getSeconds();
-  const minute = date.getMinutes();
-  const hour = date.getHours();
+  // const date = new Date();
+  // const second = date.getSeconds();
+  // const minute = date.getMinutes();
+  // const hour = date.getHours();
+  // console.log(date);
+
+  // const date = moment().format();
+  const second = moment().seconds();
+  const minute = moment().minutes();
+  const hour = moment().hours();
+  // console.log(date);
 
   const leftHour = 23 - hour;
   const leftMinute = 59 - minute;
@@ -38,12 +36,11 @@ export const Timer = ({
 
     leftTime--;
   }
-  
+
   useEffect(() => {
     updateTimer();
     setInterval(updateTimer, 1000);
   }, [updateTimer])
-  
 
   return (
     <div className='pb-4'>
