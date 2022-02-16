@@ -60,7 +60,7 @@ export const LostModal = ({
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+            <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm w-full sm:p-6">
               <div className="absolute right-4 top-4">
                 <XCircleIcon
                   className="h-6 w-6 cursor-pointer"
@@ -92,7 +92,7 @@ export const LostModal = ({
                     </div>
                     <hr className='my-4'></hr>
                     <Timer />
-                    <p className="text-sm text-gray-500">Алайда достарыңызбен әлі де бөлісе аласыз. Сөз жасырын қалады, уайымдамаңыз :)</p>
+                    <p className="text-sm text-gray-500 mb-2">Алайда достарыңызбен әлі де бөлісе аласыз. Сөз жасырын қалады, уайымдамаңыз :)</p>
                   </div>
                 </div>
               </div>
