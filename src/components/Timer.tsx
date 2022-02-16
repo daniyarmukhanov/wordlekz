@@ -44,7 +44,7 @@ export const Timer = ({
 
   return (
     <div className='pb-4'>
-      <p className="text-sm font-regular text-gray-500">Келесі сөзге дейін қалған уақыт:</p>
+      <p className="font-regular text-gray-700">Келесі сөзге дейін қалған уақыт:</p>
       <p className="text-2xl font-medium uppercase text-gray-900">
         {timeString}
       </p>

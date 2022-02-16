@@ -4,11 +4,12 @@ import { CheckIcon } from '@heroicons/react/outline'
 import { MiniGrid } from '../mini-grid/MiniGrid'
 import { shareClipboard, shareOther, generateMessage, canShareOther, WORDLE_DOMAIN } from '../../lib/share'
 import { XCircleIcon, DuplicateIcon } from '@heroicons/react/outline'
-import { ShareIcon } from '@heroicons/react/solid'
+import { ExternalLinkIcon, ShareIcon } from '@heroicons/react/solid'
 import { TwitterShareButton } from "react-share";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { Timer } from '../Timer'
+import { solution } from '../../lib/words'
 
 type Props = {
   isOpen: boolean
@@ -16,6 +17,7 @@ type Props = {
   guesses: string[]
   handleShare: () => void
 }
+console.log(solution);
 
 export const WinModal = ({
   isOpen,
@@ -82,8 +84,20 @@ export const WinModal = ({
                   </Dialog.Title>
                   <div className="mt-2">
                     <MiniGrid guesses={guesses} />
+                    <div className='mb-4'>
+                      <button className="inline-flex items-center bg-white hover:bg-gray-100 text-gray-800 font-semibold mb-1 py-2 px-4 border border-gray-400 rounded shadow">
+                        <ExternalLinkIcon className='h-6 w-6 mr-2'/>
+                        <a href={'https://sozdikqor.kz/search?q='+solution}>Сөз мағынасын көру</a>
+                      </button>
+                      <p className='text-sm text-gray-400'>Sozdikqor-ға сілтеме</p>
+                    </div>
+                    <hr className='my-4'></hr>
                     <Timer />
-                    <p className="text-sm text-gray-500">Енді осыны достарыңызбен бөліссеңіз болады</p>
+                    {/* <p className="text-sm text-gray-500">Енді осыны достарыңызбен бөліссеңіз болады</p>
+                    <hr className='my-4'></hr> */}
+                    {/* <p className="text-sm text-gray-500 mb-5">
+                      Тапқан сөздің мағынасын <a className='text-indigo-400 visited:text-indigo-600 hover:text-indigo-600' href={'https://sozdikqor.kz/search?q='+solution}>осы жерден</a> көрсеңіз болады
+                    </p> */}
                   </div>
                 </div>
               </div>

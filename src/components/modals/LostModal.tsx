@@ -5,7 +5,7 @@ import { MiniGrid } from '../mini-grid/MiniGrid'
 import { shareClipboard, shareOther, generateMessage, canShareOther, WORDLE_DOMAIN } from '../../lib/share'
 import { solution } from '../../lib/words'
 import { XCircleIcon, DuplicateIcon } from '@heroicons/react/outline'
-import { ShareIcon } from '@heroicons/react/solid'
+import { ExternalLinkIcon, ShareIcon } from '@heroicons/react/solid'
 import { TwitterShareButton } from "react-share";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
@@ -83,6 +83,14 @@ export const LostModal = ({
                   </Dialog.Title>
                   <div className="mt-2">
                     <MiniGrid guesses={guesses} />
+                    <div className='mb-4'>
+                      <button className="inline-flex items-center bg-white hover:bg-gray-100 text-gray-800 font-semibold mb-1 py-2 px-4 border border-gray-400 rounded shadow">
+                        <ExternalLinkIcon className='h-6 w-6 mr-2'/>
+                        <a href={'https://sozdikqor.kz/search?q='+solution}>Сөз мағынасын көру</a>
+                      </button>
+                      <p className='text-sm text-gray-400'>Sozdikqor-ға сілтеме</p>
+                    </div>
+                    <hr className='my-4'></hr>
                     <Timer />
                     <p className="text-sm text-gray-500">Алайда достарыңызбен әлі де бөлісе аласыз. Сөз жасырын қалады, уайымдамаңыз :)</p>
                   </div>
