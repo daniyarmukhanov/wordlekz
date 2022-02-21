@@ -97,7 +97,7 @@ function App() {
   }
 
   return (
-    <div className="h-screen basis">
+    <div className="h-screen basis flex lg:block flex-col justify-between">
       <Alert message="Бұндай сөз табылмады" isOpen={isWordNotFoundAlertOpen} />
       {/* <Alert
         message={`Қап, таба алмадыңыз. Бүгінгі сөз: ${solution} болған`}
@@ -109,7 +109,7 @@ function App() {
         variant="success"
       />
 
-      <nav className='flex items-center justify-center flex-wrap bg-slate-100 p-2 mb-4 text-slate-700'>
+      <nav className='flex items-center justify-center flex-wrap bg-slate-100 p-2 mb-6 text-slate-700'>
         <div className='flex items-center justify-between navigation'>
           <div className='flex items-center mr-6'>
             <a className='font-semibold text-2xl tracking-tight' href='/'>Сөзділ</a>
