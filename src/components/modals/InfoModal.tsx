@@ -13,7 +13,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed z-10 inset-0 overflow-y-auto"
+        className="fixed z-10 inset-0 overflow-y-auto h-full"
         onClose={handleClose}
       >
         <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -26,12 +26,12 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity h-full" />
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
           <span
-            className="hidden sm:inline-block sm:align-middle sm:h-screen"
+            className="hidden sm:inline-block sm:align-middle sm:h-full"
             aria-hidden="true"
           >
             &#8203;
@@ -45,7 +45,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+            <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
               <div className="absolute right-4 top-4">
                 <XCircleIcon
                   className="h-8 w-8 cursor-pointer text-gray-400"

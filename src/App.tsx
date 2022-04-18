@@ -11,8 +11,10 @@ import {
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
 } from './lib/localStorage'
+import WindowListener from './extra'
 
 function App() {
+  WindowListener();
   const [currentGuess, setCurrentGuess] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
   const [isGameLost, setIsGameLost] = useState(false)
@@ -95,10 +97,10 @@ function App() {
       }
     }
   }
-
+// flex lg:block flex-col
   return (
-    <div className="h-screen basis flex lg:block flex-col justify-between">
-      <Alert message="Бұндай сөз табылмады" isOpen={isWordNotFoundAlertOpen} />
+    <div className="basis flex flex-col lg:block justify-between h-[100vh] lg:h-full">
+      <Alert message="Ойын сөздігінде бұндай сөз табылмады" isOpen={isWordNotFoundAlertOpen} />
       {/* <Alert
         message={`Қап, таба алмадыңыз. Бүгінгі сөз: ${solution} болған`}
         isOpen={isGameLost}
@@ -109,7 +111,7 @@ function App() {
         variant="success"
       />
 
-      <nav className='flex items-center justify-center flex-wrap bg-slate-100 p-2 mb-6 text-slate-700'>
+      <nav className='flex items-center justify-center flex-wrap bg-slate-100 p-2 mb-3 text-slate-700'>
         <div className='flex items-center justify-between navigation'>
           <div className='flex items-center mr-6'>
             <a className='font-semibold text-2xl tracking-tight' href='/'>Сөзділ</a>

@@ -57,3 +57,7 @@ button{
       width: 100%;
     }
   }
+
+  .basis{
+    height: calc(var(--vh, 1vh) * 100);
+  }
