@@ -70,40 +70,43 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
                     </p>
                     <br></br>
                     <p className="text-sm text-gray-800">
-                    Бір күнде бір сөз. Алматы уақыты (GMT/UTC+6) бойынша, күн сайын жаңа сөз шығып тұрады.
+                    Бір күнде бір сөз. Алматы уақыты (GMT/UTC+5) бойынша, күн сайын жаңа сөз шығып тұрады.
                     </p>
 
                     <div className="flex justify-center mb-1 mt-6">
-                      <Cell value="Т" status="correct" />
-                      <Cell value="О" />
-                      <Cell value="М" />
-                      <Cell value="А" />
+                      <Cell value="К" status="correct" />
+                      <Cell value="Ү" />
+                      <Cell value="Н" />
+                      <Cell value="Д" />
+                      <Cell value="Е" />
                       <Cell value="Р" />
                     </div>
                     <p className="text-sm text-gray-600 mt-2">
-                      <b>Т</b> әрпі сөз ішінде бар әрі өз орнында тұр.
+                      <b>К</b> әрпі сөз ішінде бар әрі өз орнында тұр.
                     </p>
 
                     <div className="flex justify-center mb-1 mt-6">
-                      <Cell value="С" />
-                      <Cell value="Е" />
-                      <Cell value="Н" status="present" />
-                      <Cell value="І" />
+                      <Cell value="Ж" />
+                      <Cell value="О" />
+                      <Cell value="Ғ" status="present" />
+                      <Cell value="А" />
+                      <Cell value="Л" />
+                      <Cell value="Т" />
+                    </div>
+                    <p className="text-sm text-gray-600 mt-2">
+                      <b>Ғ</b> әрпі сөз ішінде бар, алайда тұрған жері қате.
+                    </p>
+
+                    <div className="flex justify-center mb-1 mt-6">
+                      <Cell value="К" />
+                      <Cell value="О" />
                       <Cell value="М" />
+                      <Cell value="П" status="absent" />
+                      <Cell value="А" />
+                      <Cell value="С" />
                     </div>
                     <p className="text-sm text-gray-600 mt-2">
-                      <b>Н</b> әрпі сөз ішінде бар, алайда тұрған жері қате.
-                    </p>
-
-                    <div className="flex justify-center mb-1 mt-6">
-                      <Cell value="Ү" />
-                      <Cell value="Н" />
-                      <Cell value="П" />
-                      <Cell value="А" status="absent" />
-                      <Cell value="З" />
-                    </div>
-                    <p className="text-sm text-gray-600 mt-2">
-                      <b>А</b> әрпі сөзде мүлде жоқ.
+                      <b>П</b> әрпі сөзде мүлде жоқ.
                     </p>
                   </div>
                   <hr className='mt-6 mb-4'></hr>

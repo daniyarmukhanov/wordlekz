@@ -19,9 +19,10 @@ export const getWordOfDay = () => {
   // const now = Date.now()
   // const msInDay = 86400000
   // const index = Math.floor((now - epochMs) / msInDay)
-  moment.tz.setDefault("Asia/Almaty");
+  moment.tz.setDefault("Asia/Aqtau");// change this to UTC +5
+  moment.tz.setDefault("")
   const index = moment().format('DDD');
-  // console.log(moment().format('DDD'));
+   console.log(moment().format('HH:mm:ss'));
   // console.log(moment().format());
 
   return {
