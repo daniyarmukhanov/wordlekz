@@ -11,21 +11,13 @@ export const shareClipboard = (guesses: string[]) => {
   navigator.clipboard.writeText(generateMessage(guesses))
 }
 
-export const shareOther = (guesses: string[], callback) => {
-  navigator.share({
-    text: generateMessage(guesses),
-    url: WORDLE_DOMAIN
-  })
-  .then(() => callback())
-}
-
 export const generateMessage = (guesses: string[]) => {
   return 'Сөзділ ' +
       solutionIndex +
       ' ' +
       guesses.length +
-      '/7\n\n' +
-      generateEmojiGrid(guesses)+'\n\n'
+      '/6\n\n' +
+      generateEmojiGrid(guesses)+'\n\n' + WORDLE_DOMAIN
 }
 
 export const generateEmojiGrid = (guesses: string[]) => {
@@ -47,4 +39,12 @@ export const generateEmojiGrid = (guesses: string[]) => {
         .join('')
     })
     .join('\n')
+}
+
+export const shareOther = (guesses: string[], callback) => {
+  console.log(generateMessage(guesses));
+  navigator.share({
+    text: generateMessage(guesses),
+  })
+  .then(() => callback())
 }
