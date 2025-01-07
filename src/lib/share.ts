@@ -8,7 +8,7 @@ export const canShareOther = () => {
 }
 
 export const shareClipboard = (guesses: string[]) => {
-  navigator.clipboard.writeText(generateMessage(guesses))
+  navigator.clipboard.writeText(generateMessage(guesses) + WORDLE_DOMAIN)
 }
 
 export const generateMessage = (guesses: string[]) => {
@@ -17,7 +17,7 @@ export const generateMessage = (guesses: string[]) => {
       ' ' +
       guesses.length +
       '/6\n\n' +
-      generateEmojiGrid(guesses)+'\n\n' + WORDLE_DOMAIN
+      generateEmojiGrid(guesses)+'\n\n'
 }
 
 export const generateEmojiGrid = (guesses: string[]) => {
@@ -44,7 +44,7 @@ export const generateEmojiGrid = (guesses: string[]) => {
 export const shareOther = (guesses: string[], callback) => {
   console.log(generateMessage(guesses));
   navigator.share({
-    text: generateMessage(guesses),
+    text: generateMessage(guesses) + WORDLE_DOMAIN,
   })
   .then(() => callback())
 }
