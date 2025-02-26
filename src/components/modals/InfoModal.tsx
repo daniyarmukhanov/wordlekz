@@ -48,7 +48,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
             <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
               <div className="absolute right-4 top-4">
                 <XCircleIcon
-                  className="h-8 w-8 cursor-pointer text-gray-400"
+                  className="h-6 w-6 cursor-pointer absolute right-0 top-0"
                   onClick={() => handleClose()}
                 />
               </div>

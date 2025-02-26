@@ -1,4 +1,4 @@
-import { InformationCircleIcon } from '@heroicons/react/outline'
+import { InformationCircleIcon, ChartBarIcon } from '@heroicons/react/outline'
 import { useState, useEffect } from 'react'
 import { Alert } from './components/alerts/Alert'
 import { Grid } from './components/grid/Grid'
@@ -6,10 +6,14 @@ import { Keyboard } from './components/keyboard/Keyboard'
 import { InfoModal } from './components/modals/InfoModal'
 import { WinModal } from './components/modals/WinModal'
 import { LostModal } from './components/modals/LostModal'
+import { StatsModal } from './components/modals/StatsModal'
 import { isWordInWordList, isWinningWord, solution } from './lib/words'
 import {
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
+  loadStatsFromLocalStorage,
+  saveStatsToLocalStorage,
+  initializeStats,
 } from './lib/localStorage'
 import WindowListener from './extra'
 
@@ -23,6 +27,8 @@ function App() {
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
   const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false)
   const [shareComplete, setShareComplete] = useState(false)
+  const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
+  const [stats, setStats] = useState(() => initializeStats())
   const [guesses, setGuesses] = useState<string[]>(() => {
     const loaded = loadGameStateFromLocalStorage()
     if (loaded?.solution !== solution) {
@@ -61,6 +67,58 @@ function App() {
     }
   }, [isGameWon])
 
+  useEffect(() => {
+    const gameId = localStorage.getItem('currentGameId')
+    const isGameCounted = localStorage.getItem(`game_${gameId}_counted`)
+
+    if (isGameWon && !isGameCounted && gameId) {
+      setStats((prevStats) => {
+        const newStats = {
+          gamesPlayed: prevStats.gamesPlayed + 1,
+          gamesWon: prevStats.gamesWon + 1,
+          currentStreak: prevStats.currentStreak + 1,
+          maxStreak: Math.max(prevStats.currentStreak + 1, prevStats.maxStreak),
+          guessDistribution: {
+            ...prevStats.guessDistribution,
+            [guesses.length]: prevStats.guessDistribution[guesses.length] + 1,
+          },
+        }
+        saveStatsToLocalStorage(newStats)
+        localStorage.setItem(`game_${gameId}_counted`, 'true')
+        return newStats
+      })
+    }
+  }, [isGameWon, guesses.length])
+
+  useEffect(() => {
+    const gameId = localStorage.getItem('currentGameId')
+    const isGameCounted = localStorage.getItem(`game_${gameId}_counted`)
+
+    if (isGameLost && !isGameCounted && gameId) {
+      setStats((prevStats) => {
+        const newStats = {
+          gamesPlayed: prevStats.gamesPlayed + 1,
+          gamesWon: prevStats.gamesWon,
+          currentStreak: 0,
+          maxStreak: prevStats.maxStreak,
+          guessDistribution: { ...prevStats.guessDistribution },
+        }
+        saveStatsToLocalStorage(newStats)
+        localStorage.setItem(`game_${gameId}_counted`, 'true')
+        return newStats
+      })
+    }
+  }, [isGameLost])
+
+  useEffect(() => {
+    if (solution) {
+      const currentGameId = localStorage.getItem('currentGameId')
+      if (currentGameId !== solution) {
+        localStorage.setItem('currentGameId', solution)
+      }
+    }
+  }, [solution])
+
   const onChar = (value: string) => {
     if (currentGuess.length < 6 && guesses.length < 7) {
       setCurrentGuess(`${currentGuess}${value}`)
@@ -97,7 +155,7 @@ function App() {
       }
     }
   }
-// flex lg:block flex-col
+
   return (
     <div className="basis flex flex-col lg:block justify-between h-[100vh] lg:h-full">
       <Alert message="Ойын сөздігінде бұндай сөз табылмады" isOpen={isWordNotFoundAlertOpen} />
@@ -116,7 +174,11 @@ function App() {
           <div className='flex items-center mr-6'>
             <a className='font-semibold text-2xl tracking-tight' href='/'>Сөзділ</a>
           </div>
-          <div className="w-auto">
+          <div className="w-auto flex gap-3">
+            <ChartBarIcon
+              className="h-6 w-6 cursor-pointer"
+              onClick={() => setIsStatsModalOpen(true)}
+            />
             <InformationCircleIcon
               className="h-6 w-6 cursor-pointer"
               onClick={() => setIsInfoModalOpen(true)}
@@ -167,8 +229,16 @@ function App() {
         isOpen={isInfoModalOpen}
         handleClose={() => setIsInfoModalOpen(false)}
       />
+
+      <StatsModal
+        isOpen={isStatsModalOpen}
+        handleClose={() => setIsStatsModalOpen(false)}
+        stats={stats}
+      />
     </div>
   )
 }
+
+
 
 export default App
