@@ -19,6 +19,7 @@ import WindowListener from './extra'
 
 function App() {
   WindowListener();
+  const [showNewBadge, setShowNewBadge] = useState(true)
   const [currentGuess, setCurrentGuess] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
   const [isGameLost, setIsGameLost] = useState(false)
@@ -156,6 +157,30 @@ function App() {
     }
   }
 
+  const handleStatsClick = () => {
+    setIsStatsModalOpen(true)
+    const badgeFirstClicked = localStorage.getItem('stats_badge_clicked')
+    if (!badgeFirstClicked) {
+      localStorage.setItem('stats_badge_clicked', new Date().toISOString())
+    }
+  }
+
+  useEffect(() => {
+    const checkBadgeVisibility = () => {
+      const badgeFirstClicked = localStorage.getItem('stats_badge_clicked')
+      if (badgeFirstClicked) {
+        const firstClickDate = new Date(badgeFirstClicked)
+        const now = new Date()
+        const hoursSinceFirstClick = (now.getTime() - firstClickDate.getTime()) / (1000 * 60 * 60)
+        setShowNewBadge(hoursSinceFirstClick < 24)
+      }
+    }
+
+    checkBadgeVisibility()
+    const interval = setInterval(checkBadgeVisibility, 1000 * 60) // Check every minute
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <div className="basis flex flex-col lg:block justify-between h-[100vh] lg:h-full">
       <Alert message="Ойын сөздігінде бұндай сөз табылмады" isOpen={isWordNotFoundAlertOpen} />
@@ -175,10 +200,17 @@ function App() {
             <a className='font-semibold text-2xl tracking-tight' href='/'>Сөзділ</a>
           </div>
           <div className="w-auto flex gap-3">
-            <ChartBarIcon
-              className="h-6 w-6 cursor-pointer"
-              onClick={() => setIsStatsModalOpen(true)}
-            />
+            <div className="relative">
+              <ChartBarIcon
+                className="h-6 w-6 cursor-pointer"
+                onClick={handleStatsClick}
+              />
+              {showNewBadge && (
+                <span className="absolute top-1 -left-11 bg-emerald-600 text-white text-xs px-1 py-0.3 rounded-sm">
+                  Жаңа
+                </span>
+              )}
+            </div>
             <InformationCircleIcon
               className="h-6 w-6 cursor-pointer"
               onClick={() => setIsInfoModalOpen(true)}
