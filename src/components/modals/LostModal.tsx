@@ -96,7 +96,7 @@ export const LostModal = ({
                   </div>
                 </div>
               </div>
-              <div className="sm:mt-2 grid gap-2 grid-cols-1 grid-rows-3 max-w-full">
+              <div className="sm:mt-2 grid gap-2 grid-cols-1 max-w-full">
                 <TwitterShareButton title={generateMessage(guesses)} url={WORDLE_DOMAIN}>
                    <button
                     type="button"
@@ -128,6 +128,17 @@ export const LostModal = ({
                   <DuplicateIcon className="h-6 w-6 pr-1" />
                   Нәтижені көшіру
                 </button>
+                <a
+                  href="https://torteu.kz/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative inline-flex items-center justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-amber-500 text-base font-medium text-white hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-400 sm:text-sm"
+                >
+                  Төртеу түгел ойынын көру
+                  <span className="absolute -top-2 -right-2 inline-flex items-center rounded-full bg-white px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-600 shadow">
+                    жаңа
+                  </span>
+                </a>
               </div>
             </div>
           </Transition.Child>
