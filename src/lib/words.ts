@@ -1,6 +1,39 @@
 import { WORDS } from '../constants/wordlist'
 import { VALIDGUESSES } from '../constants/validGuesses'
-import moment from 'moment-timezone';
+import moment from 'moment-timezone'
+
+type WordOfDay = {
+  solution: string
+  solutionIndex: number
+}
+
+const GAME_TIMEZONE = 'Asia/Aqtau'
+
+const normalizeIndex = (rawIndex: number) => {
+  const wrappedIndex = rawIndex % WORDS.length
+  return wrappedIndex < 0 ? wrappedIndex + WORDS.length : wrappedIndex
+}
+
+const computeWordOfDayFromTimestamp = (timestamp: number): WordOfDay => {
+  const dayOfYear = Number(moment(timestamp).tz(GAME_TIMEZONE).format('DDD'))
+  const index = normalizeIndex(dayOfYear - 1)
+
+  return {
+    solution: WORDS[index].toUpperCase(),
+    solutionIndex: dayOfYear,
+  }
+}
+
+let cachedWordOfDay: WordOfDay = computeWordOfDayFromTimestamp(Date.now())
+export let solution = cachedWordOfDay.solution
+export let solutionIndex = cachedWordOfDay.solutionIndex
+
+export const initializeWordOfDay = (timestamp: number) => {
+  cachedWordOfDay = computeWordOfDayFromTimestamp(timestamp)
+  solution = cachedWordOfDay.solution
+  solutionIndex = cachedWordOfDay.solutionIndex
+  return cachedWordOfDay
+}
 
 export const isWordInWordList = (word: string) => {
   return (
@@ -13,22 +46,4 @@ export const isWinningWord = (word: string) => {
   return solution === word
 }
 
-export const getWordOfDay = () => {
-  // January 1, 2022 Game Epoch
-  // const epochMs = 1641013200000
-  // const now = Date.now()
-  // const msInDay = 86400000
-  // const index = Math.floor((now - epochMs) / msInDay)
-  moment.tz.setDefault("Asia/Aqtau");// change this to UTC +5
-  moment.tz.setDefault("")
-  const index = moment().format('DDD');
-   console.log(moment().format('HH:mm:ss'));
-  // console.log(moment().format());
-
-  return {
-    solution: WORDS[index].toUpperCase(),
-    solutionIndex: index,
-  }
-}
-
-export const { solution, solutionIndex } = getWordOfDay()
+export const getWordOfDay = () => cachedWordOfDay
