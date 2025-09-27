@@ -23,12 +23,45 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 getAnalytics(app)
 
+const SERVER_TIMESTAMP_STORAGE_KEY = 'wordle:serverTimestamp'
+
+const storeServerTimestamp = (timestamp: number) => {
+  try {
+    window.localStorage.setItem(
+      SERVER_TIMESTAMP_STORAGE_KEY,
+      String(timestamp)
+    )
+  } catch (storageError) {
+    console.warn('Unable to persist server timestamp', storageError)
+  }
+}
+
+const readStoredServerTimestamp = (): number | null => {
+  try {
+    const rawTimestamp = window.localStorage.getItem(
+      SERVER_TIMESTAMP_STORAGE_KEY
+    )
+
+    if (!rawTimestamp) {
+      return null
+    }
+
+    const parsedTimestamp = Number(rawTimestamp)
+
+    return Number.isFinite(parsedTimestamp) ? parsedTimestamp : null
+  } catch (storageError) {
+    console.warn('Unable to read cached server timestamp', storageError)
+    return null
+  }
+}
+
 const fetchGoogleTime = async (): Promise<number> => {
   const database = getDatabase(app)
   const offsetSnapshot = await get(ref(database, '.info/serverTimeOffset'))
-  const offset = offsetSnapshot.val()
+  const offsetValue = offsetSnapshot.val()
+  const offset = Number(offsetValue)
 
-  if (typeof offset === 'number') {
+  if (Number.isFinite(offset)) {
     return Date.now() + offset
   }
 
@@ -45,13 +78,22 @@ const renderApplication = () => {
 }
 
 const bootstrap = async () => {
+  let resolvedTimestamp: number | null = null
+
   try {
     const googleTimestamp = await fetchGoogleTime()
-    initializeWordOfDay(googleTimestamp)
+    storeServerTimestamp(googleTimestamp)
+    resolvedTimestamp = googleTimestamp
   } catch (error) {
-    console.error('Falling back to device time for word of the day', error)
-    initializeWordOfDay(Date.now())
+    console.error('Failed to fetch Google server time', error)
+    const cachedServerTimestamp = readStoredServerTimestamp()
+
+    if (cachedServerTimestamp !== null) {
+      console.info('Using cached server timestamp for word of the day')
+      resolvedTimestamp = cachedServerTimestamp
+    }
   } finally {
+    initializeWordOfDay(resolvedTimestamp ?? Date.now())
     renderApplication()
   }
 }

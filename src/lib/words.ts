@@ -16,7 +16,7 @@ const normalizeIndex = (rawIndex: number) => {
 
 const computeWordOfDayFromTimestamp = (timestamp: number): WordOfDay => {
   const dayOfYear = Number(moment(timestamp).tz(GAME_TIMEZONE).format('DDD'))
-  const index = normalizeIndex(dayOfYear - 1)
+  const index = normalizeIndex(dayOfYear)
 
   return {
     solution: WORDS[index].toUpperCase(),
