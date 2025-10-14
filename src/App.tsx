@@ -267,6 +267,17 @@ function App() {
         handleClose={() => setIsStatsModalOpen(false)}
         stats={stats}
       />
+
+      <footer className="text-center text-sm text-slate-600 py-4">
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfwai0b117UpDxqGgCLoKtSnuhj6HbwAB9c63IpL3zXi0AQOQ/viewform"
+          target="_blank"
+          rel="noreferrer"
+          className="underline"
+        >
+          Өз сөзімді ұсыну
+        </a>
+      </footer>
     </div>
   )
 }
