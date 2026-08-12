@@ -37,9 +37,20 @@
     ></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8675457617835739"
      crossorigin="anonymous"></script>
-    <script defer 
-      src='https://static.cloudflareinsights.com/beacon.min.js' 
+    <script defer
+      src='https://static.cloudflareinsights.com/beacon.min.js'
       data-cf-beacon='{"token": "12f542d63c394126b496cf8c26b28efa"}'></script>
+
+    <!-- Jumbaq app funnel.
+         The native Smart App Banner handles iOS Safari; app-argument points at
+         /open, which the app claims as a Universal Link when installed and which
+         otherwise 302s to jmbq.kz/sozdil with UTMs attached. -->
+    <meta name="apple-itunes-app"
+          content="app-id=6763323078, app-argument=https://wordle.kz/open">
+    <!-- The banner covers Android and non-Safari iOS; it deliberately skips iOS
+         Safari so it never doubles up with the meta tag above. -->
+    <script defer src="https://jmbq.kz/banner.js" data-game="sozdil"></script>
+
     <title>Сөзділ | Қазақша Wordle</title>
   </head>
   <body>
